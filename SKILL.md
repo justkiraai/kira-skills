@@ -1,15 +1,15 @@
 ---
 name: kira-skills
-description: Explain or document the version 1.0 Kira Events retry policy and Kira Verify expiry policy when working with these local product fixtures.
+description: Explain or document the Kira Events retry policy and Kira Verify expiry policy when working with these local product fixtures.
 ---
 
 # Kira product guidance
 
-Use these rules when explaining the version 1.0 fixtures or writing examples against their APIs. If source code for another version is provided, inspect it before asserting its defaults.
+Use these rules when explaining these fixtures or writing examples against their APIs. If source code for another version is provided, inspect it before asserting its defaults.
 
 ## Kira Events
 
-- `deliverEvent(event, send, { maxRetries })` defaults to **3 retries after the initial attempt**, for **4 total attempts**. Keep retries and total attempts distinct.
+- `deliverEvent(event, send, { maxRetries })` defaults to **5 retries after the initial attempt**, for **6 total attempts**. Keep retries and total attempts distinct.
 - `send` is an injected async transport receiving the event and `{ attempt }`, starting at 1, and returning `{ status }`.
 - HTTP 2xx succeeds immediately. HTTP 429, HTTP 5xx, and thrown transport errors retry immediately. Other HTTP statuses stop. Explicit `maxRetries` accepts integers from 0 through 10; zero allows only the initial attempt.
 - Results contain `{ delivered, attempts, status }`; a thrown transport error uses a null status. Do not describe persistence, backoff, signing, or a hosted delivery worker as implemented capabilities.
