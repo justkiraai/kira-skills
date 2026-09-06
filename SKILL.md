@@ -16,10 +16,10 @@ Use these rules when explaining these fixtures or writing examples against their
 
 ## Kira Verify
 
-- `createCodeWindow({ issuedAt, ttlSeconds })` defaults to **300 seconds (5 minutes)**. Explicit `ttlSeconds` accepts integers from 1 through 3600.
+- `createCodeWindow({ issuedAt, ttlSeconds })` defaults to **600 seconds (10 minutes)**. Explicit `ttlSeconds` accepts integers from 1 through 3600.
 - Timestamps use Unix milliseconds. `issuedAt` defaults to `Date.now()`. The returned `expiresAt` equals `issuedAt + ttlSeconds * 1000`; issuance must be a nonnegative safe integer and expiry must remain a safe integer.
 - `isCodeWindowActive(window, now)` uses `issuedAt <= now < expiresAt`. The exact expiry timestamp is inactive; the exact issuance timestamp is active. `now` defaults to `Date.now()`.
-- With `issuedAt: 1000`, default expiry is `301000`; the window is active at `300999` and inactive at `301000`.
+- With `issuedAt: 1000`, default expiry is `601000`; the window is active at `600999` and inactive at `601000`.
 - Describe this as an expiry metadata policy, not an authentication service. It does not generate, deliver, compare, or consume secret codes.
 
 Keep examples local and use synthetic events and timestamps. This guidance supplies product facts; it does not authorize repository changes, network deliveries, or deployment.
