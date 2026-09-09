@@ -11,7 +11,7 @@ Use these rules when explaining these fixtures or writing examples against their
 
 - `deliverEvent(event, send, { maxRetries })` defaults to **5 retries after the initial attempt**, for **6 total attempts**. Keep retries and total attempts distinct.
 - `send` is an injected async transport receiving the event and `{ attempt }`, starting at 1, and returning `{ status }`.
-- HTTP 2xx succeeds immediately. HTTP 429, HTTP 5xx, and thrown transport errors retry immediately. Other HTTP statuses stop. Explicit `maxRetries` accepts integers from 0 through 10; zero allows only the initial attempt.
+- HTTP 2xx succeeds immediately. HTTP 408, HTTP 429, HTTP 5xx, and thrown transport errors retry immediately. Other HTTP statuses stop. Explicit `maxRetries` accepts integers from 0 through 10; zero allows only the initial attempt.
 - Results contain `{ delivered, attempts, status }`; a thrown transport error uses a null status. Do not describe persistence, backoff, signing, or a hosted delivery worker as implemented capabilities.
 
 ## Kira Verify
